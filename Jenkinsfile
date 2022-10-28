@@ -20,8 +20,8 @@ pipeline {
         stage('Push image to Hub'){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u niteshsngh -p ${dockerhubpwd}'
+                   withCredentials([string(credentialsId: 'jenkins-docker', variable: 'jenkins-docker')]){
+                   sh 'docker login -u niteshsngh -p ${jenkins-docker}'
 
 }
                    sh 'docker push niteshsngh/devops-integration'
